@@ -6,34 +6,36 @@ import '../helpers/shared_pref_helper.dart';
 import '../helpers/shared_prefs_keys.dart';
 
 class DioFactory {
-  /// private constructor as I don't want to allow creating an instance of this class
   DioFactory._();
 
   static Dio? dio;
 
-  static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 15);
+  static Future<void> init() async {
+    Duration timeOut = const Duration(minutes: 1);
 
-    if (dio == null) {
-      dio = Dio();
-      dio!
-        ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      addDioHeaders();
-      addDioInterceptor();
-      return dio!;
-    } else {
-      return dio!;
-    }
+    dio = Dio();
+    dio!.options
+      ..connectTimeout = timeOut
+      ..receiveTimeout = timeOut;
+
+    await _addDioHeaders();
+    _addDioInterceptor();
   }
 
-  static void addDioHeaders() async {
+  static Dio getDio() {
+    if (dio == null) {
+      throw Exception("Dio is not initialized. Call DioFactory.init() first.");
+    }
+    return dio!;
+  }
+
+  static Future<void> _addDioHeaders() async {
+    final token = await SharedPrefHelper.getSecuredString(SharedPrefsKeys.tokenKey);
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefsKeys.tokenKey)}',
+      'Authorization': 'Bearer $token',
     };
-    debugPrint("Headers have been set into dio");
+    debugPrint("Headers have been set into Dio with token: $token");
   }
 
   static void setTokenIntoHeaderAfterLogin(String token) {
@@ -44,7 +46,7 @@ class DioFactory {
     debugPrint("Token has been set into header");
   }
 
-  static void addDioInterceptor() {
+  static void _addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,

@@ -45,7 +45,7 @@ class ServerFailure extends Failures {
       return ServerFailure(
         error: errorResponseBody["errors"] != null
             ? parseErrorResponse(errorResponseBody as Map<String, dynamic>)
-            : errorResponseBody["data"]["message"] ??
+            : errorResponseBody["message"] ??
                 'There was an error , Please try again',
       );
     } else if (statesCode == 404) {
