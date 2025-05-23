@@ -4,7 +4,7 @@ class ApiManager {
   ApiManager({required this.dio});
 
   final Dio dio;
-  static const String baseUrl = 'http://82.25.101.221:3003/api/';
+  static const String baseUrl = 'https://marketi-app.onrender.com/api/v1/';
 
   Future<Response> post({
     required String endPoint,

@@ -8,5 +8,8 @@ class Routes {
   static const String createNewPassword = '/createNewPassword';
   static const String congratulationScreen = '/congratulationScreen';
   static const String mainScreen = '/mainScreen';
+  static const String allPopularProducts = '/allPopularProducts';
+  static const String allCategory = '/allCategory';
+  static const String allBrands = '/allBrands';
 
 }

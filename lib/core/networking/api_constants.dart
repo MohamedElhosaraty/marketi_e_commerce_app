@@ -1,11 +1,15 @@
 class ApiConstants {
-  static const String apiBaseUrl = "http://82.25.101.221:3003/api/";
 
-  static const String login = "auth/login";
-  static const String signup = "auth/register";
-  static const String resetEmail = "auth/password/request";
-  static const String verifyEmail = "auth/password/verify";
-  static const String resetEmailAndToken = "auth/password/reset";
+  static const String login = "auth/signIn";
+  static const String signup = "auth/signUp";
+  static const String sendPassEmail = "auth/sendPassEmail";
+  static const String verifyCode = "auth/activeResetPass";
+  static const String createNewPassword = "auth/resetPassword";
+  static const String userData = "portfoilo/userData";
+  static const String products = "home/products";
+  static const String categories = "home/categories";
+  static const String brands = "home/brands";
+
 }
 
 class ApiErrors {

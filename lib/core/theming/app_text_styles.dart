@@ -46,6 +46,13 @@ class AppTextStyles {
     fontStyle: FontStyle.italic,
     context: context,
   );
+  static TextStyle poppins16LightMedium(BuildContext context) => baseStyle(
+    fontFamily: AppFontFamilies.fontFamilyPoppins,
+    fontWeight: AppFontWeights.fontWeightLightMedium,
+    fontSize: AppTextSizes.fontSize16,
+    fontStyle: FontStyle.italic,
+    context: context,
+  );
 
   static TextStyle poppins12Medium(BuildContext context) => baseStyle(
     fontFamily: AppFontFamilies.fontFamilyPoppins,
@@ -83,6 +90,29 @@ class AppTextStyles {
     fontFamily: AppFontFamilies.fontFamilyPoppins,
     fontWeight: AppFontWeights.fontWeightMedium,
     fontSize: AppTextSizes.fontSize14,
+    fontStyle: FontStyle.italic,
+    context: context,
+  );
+
+  static TextStyle poppins24Medium(BuildContext context) => baseStyle(
+    fontFamily: AppFontFamilies.fontFamilyPoppins,
+    fontWeight: AppFontWeights.fontWeightMedium,
+    fontSize: AppTextSizes.fontSize24,
+    fontStyle: FontStyle.italic,
+    context: context,
+  );
+
+  static TextStyle poppins20Medium(BuildContext context) => baseStyle(
+    fontFamily: AppFontFamilies.fontFamilyPoppins,
+    fontWeight: AppFontWeights.fontWeightMedium,
+    fontSize: AppTextSizes.fontSize20,
+    fontStyle: FontStyle.italic,
+    context: context,
+  );
+  static TextStyle poppins20SemiBold(BuildContext context) => baseStyle(
+    fontFamily: AppFontFamilies.fontFamilyPoppins,
+    fontWeight: AppFontWeights.fontWeightSemiBold,
+    fontSize: AppTextSizes.fontSize20,
     fontStyle: FontStyle.italic,
     context: context,
   );
