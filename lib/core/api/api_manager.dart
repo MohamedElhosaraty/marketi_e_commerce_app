@@ -26,9 +26,11 @@ class ApiManager {
     return response;
   }
 
-  Future<Response> delete({required String endPoint}) async {
+  Future<Response> delete({required String endPoint,required Map<String, dynamic> data,}) async {
     final response = await dio.delete(
       baseUrl + endPoint,
+      data: data,
+
     );
 
     return response;

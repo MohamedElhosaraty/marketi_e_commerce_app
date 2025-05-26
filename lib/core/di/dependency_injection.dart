@@ -28,6 +28,10 @@ import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/login_cu
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/send_pass_email_cubit/send_pass_email_cubit.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/verify_code_cubit/verify_code_cubit.dart';
+import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/favourites_data_sources.dart';
+import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/favourites_data_sources_impl.dart';
+import 'package:marketi_e_commerce_app/features/favourites/data/repositories/favourites_repo_impl.dart';
+import 'package:marketi_e_commerce_app/features/favourites/domain/repositories/favourites_repo.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/brand_data_sources.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/brand_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/category_data_sources.dart';
@@ -46,6 +50,8 @@ import 'package:marketi_e_commerce_app/features/home/presentation/cubit/category
 import 'package:marketi_e_commerce_app/features/home/presentation/cubit/product_cubit/product_cubit.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/cubit/user_data_cubit/user_data_cubit.dart';
 import '../../features/auth/data/data_sources/login_data_sources.dart';
+import '../../features/favourites/domain/usecase/favourites_usecase.dart';
+import '../../features/favourites/presentation/cubit/favourites_cubit/favourites_cubit.dart';
 import '../../features/home/data/repositories/brand_repo_impl.dart';
 import '../../features/home/data/repositories/product_repo_impl.dart';
 import '../../features/home/data/repositories/user_data_repo_impl.dart';
@@ -102,6 +108,10 @@ Future<void> setupGetIt() async {
     () => BrandDataSourcesImpl(getIt<ApiManager>()),
   );
 
+  getIt.registerLazySingleton<FavouritesDataSources>(
+    () => FavouritesDataSourcesImpl(getIt<ApiManager>()),
+  );
+
   // 📚 Repositories
   getIt.registerLazySingleton<LoginRepository>(
     () => LoginRepositoryImpl(getIt<LoginRemoteDataSource>()),
@@ -137,6 +147,11 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton<BrandRepo>(
     () => BrandRepoImpl(getIt<BrandDataSources>()),
+  );
+
+
+  getIt.registerLazySingleton<FavouritesRepo>(
+    () => FavouritesRepoImpl(getIt<FavouritesDataSources>()),
   );
 
   // ✅ Use Cases
@@ -175,6 +190,11 @@ Future<void> setupGetIt() async {
     () => BrandUsecase(getIt<BrandRepo>()),
   );
 
+
+  getIt.registerLazySingleton<FavouritesUseCase>(
+    () => FavouritesUseCase(getIt<FavouritesRepo>()),
+  );
+
   // 🧠 Cubits
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
 
@@ -192,19 +212,24 @@ Future<void> setupGetIt() async {
     () => CreateNewPasswordCubit(getIt<CreateNewPasswordUseCase>()),
   );
 
-  getIt.registerFactory<UserDataCubit>(
+  getIt.registerLazySingleton<UserDataCubit>(
     () => UserDataCubit(getIt<UserDataUseCase>()),
   );
 
-  getIt.registerFactory<ProductCubit>(
-    () => ProductCubit(getIt<ProductUseCase>()),
+  getIt.registerLazySingleton<ProductCubit>(
+        () => ProductCubit(getIt<ProductUseCase>()),
   );
 
-  getIt.registerFactory<CategoryCubit>(
+
+  getIt.registerLazySingleton<CategoryCubit>(
     () => CategoryCubit(getIt<CategoryUseCase>()),
   );
 
-  getIt.registerFactory<BrandCubit>(
+  getIt.registerLazySingleton<BrandCubit>(
     () => BrandCubit(getIt<BrandUsecase>()),
+  );
+
+  getIt.registerFactory<FavouritesCubit>(
+    () => FavouritesCubit(getIt<FavouritesUseCase>()),
   );
 }

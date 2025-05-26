@@ -9,6 +9,9 @@ class ApiConstants {
   static const String products = "home/products";
   static const String categories = "home/categories";
   static const String brands = "home/brands";
+  static const String getFavourites = "user/getFavorite";
+  static const String addFavourites = "user/addFavorite";
+  static const String removeFavourites = "user/deleteFavorite";
 
 }
 
