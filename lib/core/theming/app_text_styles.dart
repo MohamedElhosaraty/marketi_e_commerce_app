@@ -93,6 +93,13 @@ class AppTextStyles {
     fontStyle: FontStyle.italic,
     context: context,
   );
+  static TextStyle poppins14SemiBold(BuildContext context) => baseStyle(
+    fontFamily: AppFontFamilies.fontFamilyPoppins,
+    fontWeight: AppFontWeights.fontWeightSemiBold,
+    fontSize: AppTextSizes.fontSize14,
+    fontStyle: FontStyle.italic,
+    context: context,
+  );
 
   static TextStyle poppins24Medium(BuildContext context) => baseStyle(
     fontFamily: AppFontFamilies.fontFamilyPoppins,

@@ -36,6 +36,7 @@ class Assets {
   static const String svgActiveCartIcon = 'assets/svg/active_cart_icon.svg';
   static const String svgActiveFavouriteIcon = 'assets/svg/active_favourite_icon.svg';
   static const String svgActiveHomeIcon = 'assets/svg/active_home_icon.svg';
+  static const String svgCartEmpty = 'assets/svg/cart_empty.svg';
   static const String svgCartIcon = 'assets/svg/cart_icon.svg';
   static const String svgFavouriteIcon = 'assets/svg/favourite_icon.svg';
   static const String svgFilterIcon = 'assets/svg/filter_icon.svg';

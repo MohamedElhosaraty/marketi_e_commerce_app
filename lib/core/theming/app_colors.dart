@@ -11,6 +11,7 @@ class AppColors {
   static const Color grayScale = Color (0xFF67687E);
   static const Color placeHolder = Color (0xFF929BAB);
   static const Color lightBlue900 = Color (0xFFD9E6FF);
+  static const Color lightBlue = Color (0xFFF5FBFF);
 
   static const Color transparent = Colors.transparent;
 
