@@ -28,6 +28,10 @@ import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/login_cu
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/send_pass_email_cubit/send_pass_email_cubit.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/cubit/verify_code_cubit/verify_code_cubit.dart';
+import 'package:marketi_e_commerce_app/features/cart/data/data_sources/cart_data_sources_impl.dart';
+import 'package:marketi_e_commerce_app/features/cart/data/repositories/cart_repo_impl.dart';
+import 'package:marketi_e_commerce_app/features/cart/domain/repositories/cart_repo.dart';
+import 'package:marketi_e_commerce_app/features/cart/domain/usecase/cart_usecase.dart';
 import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/favourites_data_sources.dart';
 import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/favourites_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/favourites/data/repositories/favourites_repo_impl.dart';
@@ -50,6 +54,9 @@ import 'package:marketi_e_commerce_app/features/home/presentation/cubit/category
 import 'package:marketi_e_commerce_app/features/home/presentation/cubit/product_cubit/product_cubit.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/cubit/user_data_cubit/user_data_cubit.dart';
 import '../../features/auth/data/data_sources/login_data_sources.dart';
+import '../../features/cart/data/data_sources/cart_data_sources.dart';
+import '../../features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
+import '../../features/checkout/cubit/checkout__cubit.dart';
 import '../../features/favourites/domain/usecase/favourites_usecase.dart';
 import '../../features/favourites/presentation/cubit/favourites_cubit/favourites_cubit.dart';
 import '../../features/home/data/repositories/brand_repo_impl.dart';
@@ -103,13 +110,16 @@ Future<void> setupGetIt() async {
     () => CategoryDataSourcesImpl(getIt<ApiManager>()),
   );
 
-
   getIt.registerLazySingleton<BrandDataSources>(
     () => BrandDataSourcesImpl(getIt<ApiManager>()),
   );
 
   getIt.registerLazySingleton<FavouritesDataSources>(
     () => FavouritesDataSourcesImpl(getIt<ApiManager>()),
+  );
+
+  getIt.registerLazySingleton<CartDataSources>(
+    () => CartDataSourcesImpl(getIt<ApiManager>()),
   );
 
   // 📚 Repositories
@@ -149,9 +159,12 @@ Future<void> setupGetIt() async {
     () => BrandRepoImpl(getIt<BrandDataSources>()),
   );
 
-
   getIt.registerLazySingleton<FavouritesRepo>(
     () => FavouritesRepoImpl(getIt<FavouritesDataSources>()),
+  );
+
+  getIt.registerLazySingleton<CartRepo>(
+    () => CartRepoImpl(getIt<CartDataSources>()),
   );
 
   // ✅ Use Cases
@@ -190,9 +203,12 @@ Future<void> setupGetIt() async {
     () => BrandUsecase(getIt<BrandRepo>()),
   );
 
-
   getIt.registerLazySingleton<FavouritesUseCase>(
     () => FavouritesUseCase(getIt<FavouritesRepo>()),
+  );
+
+  getIt.registerLazySingleton<CartUseCase>(
+    () => CartUseCase(getIt<CartRepo>()),
   );
 
   // 🧠 Cubits
@@ -217,9 +233,8 @@ Future<void> setupGetIt() async {
   );
 
   getIt.registerLazySingleton<ProductCubit>(
-        () => ProductCubit(getIt<ProductUseCase>()),
+    () => ProductCubit(getIt<ProductUseCase>()),
   );
-
 
   getIt.registerLazySingleton<CategoryCubit>(
     () => CategoryCubit(getIt<CategoryUseCase>()),
@@ -229,7 +244,12 @@ Future<void> setupGetIt() async {
     () => BrandCubit(getIt<BrandUsecase>()),
   );
 
-  getIt.registerFactory<FavouritesCubit>(
+  getIt.registerLazySingleton<FavouritesCubit>(
     () => FavouritesCubit(getIt<FavouritesUseCase>()),
   );
+  getIt.registerLazySingleton<CartCubit>(
+          () => CartCubit(getIt<CartUseCase>()));
+
+  getIt.registerLazySingleton<CheckoutCubit>(
+          () => CheckoutCubit());
 }

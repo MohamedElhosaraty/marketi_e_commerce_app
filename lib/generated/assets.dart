@@ -28,6 +28,7 @@ class Assets {
   static const String imagesGoogleIcon = 'assets/images/Google_Icon.png';
   static const String imagesLogoSignUp = 'assets/images/Logo_Sign_Up.png';
   static const String imagesLogoSplashScreen = 'assets/images/Logo_Splash_Screen.png';
+  static const String imagesMap = 'assets/images/map.png';
   static const String imagesOffer = 'assets/images/offer.png';
   static const String imagesOnboarding1 = 'assets/images/onboarding_1.png';
   static const String imagesOnboarding2 = 'assets/images/onboarding_2.png';
@@ -38,6 +39,7 @@ class Assets {
   static const String svgActiveHomeIcon = 'assets/svg/active_home_icon.svg';
   static const String svgCartEmpty = 'assets/svg/cart_empty.svg';
   static const String svgCartIcon = 'assets/svg/cart_icon.svg';
+  static const String svgCheckoutSuccess = 'assets/svg/checkout_success.svg';
   static const String svgFavouriteIcon = 'assets/svg/favourite_icon.svg';
   static const String svgFilterIcon = 'assets/svg/filter_icon.svg';
   static const String svgHomeIcon = 'assets/svg/home_icon.svg';

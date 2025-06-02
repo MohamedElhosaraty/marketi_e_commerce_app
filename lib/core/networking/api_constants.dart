@@ -12,6 +12,9 @@ class ApiConstants {
   static const String getFavourites = "user/getFavorite";
   static const String addFavourites = "user/addFavorite";
   static const String removeFavourites = "user/deleteFavorite";
+  static const String addToCart = "user/addCart";
+  static const String getCart = "user/getCart";
+  static const String removeFromCart = "user/deleteCart";
 
 }
 

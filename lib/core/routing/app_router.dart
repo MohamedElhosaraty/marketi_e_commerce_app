@@ -4,6 +4,7 @@ import 'package:marketi_e_commerce_app/features/auth/presentation/pages/congratu
 import 'package:marketi_e_commerce_app/features/auth/presentation/pages/create_new_password.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/pages/forgot_password_email.dart';
 import 'package:marketi_e_commerce_app/features/auth/presentation/pages/verification_code_email.dart';
+import 'package:marketi_e_commerce_app/features/checkout/presentation/pages/checkout_success.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/pages/all_brands.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/pages/all_category.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/pages/all_popular_product.dart';
@@ -12,6 +13,8 @@ import 'package:marketi_e_commerce_app/features/onboarding/presentation/pages/on
 
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
+import '../../features/cart/presentation/cubit/cart_cubit/cart_state.dart';
+import '../../features/checkout/presentation/pages/checkout_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -61,6 +64,16 @@ class AppRouter {
 
       case Routes.allBrands:
         return MaterialPageRoute(builder: (_) =>  AllBrands(),);
+
+
+
+      case Routes.checkOutScreen:
+        return MaterialPageRoute(builder: (_) =>  CheckoutScreen(
+          cartState:  settings.arguments as CartState,
+        ),);
+
+   case Routes.checkoutSuccess:
+        return MaterialPageRoute(builder: (_) =>  CheckoutSuccess(),);
 
 
     }
