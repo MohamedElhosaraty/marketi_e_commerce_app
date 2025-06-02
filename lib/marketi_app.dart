@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
+import 'features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'features/favourites/presentation/cubit/favourites_cubit/favourites_cubit.dart';
 
 class MarketApp extends StatelessWidget {
@@ -16,8 +17,17 @@ class MarketApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
-        child: BlocProvider(
-          create: (context) => getIt<FavouritesCubit>()..getFavourites(),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) =>
+              getIt<FavouritesCubit>()
+                ..getFavourites(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<CartCubit>()..getCart(),
+            ),
+          ],
           child: MaterialApp(
             title: 'MarketApp',
             theme: ThemeData(

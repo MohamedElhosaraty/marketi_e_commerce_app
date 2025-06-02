@@ -11,5 +11,7 @@ class Routes {
   static const String allPopularProducts = '/allPopularProducts';
   static const String allCategory = '/allCategory';
   static const String allBrands = '/allBrands';
+  static const String checkOutScreen = '/checkOutScreen';
+  static const String checkoutSuccess = '/checkoutSuccess';
 
 }
