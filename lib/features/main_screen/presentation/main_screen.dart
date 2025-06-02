@@ -9,7 +9,6 @@ import 'package:marketi_e_commerce_app/features/home/presentation/pages/home_scr
 import 'package:marketi_e_commerce_app/features/menu/presentation/pages/menu_screen.dart';
 
 import '../../../core/widgets/bottom_nav_bar.dart';
-import '../../favourites/presentation/cubit/favourites_cubit/favourites_cubit.dart';
 import '../../home/presentation/cubit/brand_cubit/brand_cubit.dart';
 import '../../home/presentation/cubit/product_cubit/product_cubit.dart';
 
