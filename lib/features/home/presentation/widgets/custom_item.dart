@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:marketi_e_commerce_app/features/favourites/presentation/cubit/favourites_cubit/favourites_cubit.dart';
+import 'package:marketi_e_commerce_app/features/home/presentation/cubit/add_rate/add_rate_cubit.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
+import '../cubit/product_cubit/product_cubit.dart';
 
 class CustomItem extends StatelessWidget {
   const CustomItem({
@@ -143,7 +145,12 @@ class CustomItem extends StatelessWidget {
                   itemBuilder:
                       (context, _) =>
                           Icon(Icons.star, color: Color(0xffEF9B26)),
-                  onRatingUpdate: (rating) {},
+                  onRatingUpdate: (rating) {
+                     context
+                        .read<AddRateCubit>()
+                        .addRate(id ?? "", rating.round().toString());
+
+                  },
                 ),
                 2.horizontalSpace,
                 Text(

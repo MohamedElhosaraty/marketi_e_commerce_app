@@ -36,6 +36,8 @@ import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/fav
 import 'package:marketi_e_commerce_app/features/favourites/data/data_sources/favourites_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/favourites/data/repositories/favourites_repo_impl.dart';
 import 'package:marketi_e_commerce_app/features/favourites/domain/repositories/favourites_repo.dart';
+import 'package:marketi_e_commerce_app/features/home/data/data_sources/add_rate_data_sources.dart';
+import 'package:marketi_e_commerce_app/features/home/data/data_sources/add_rate_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/brand_data_sources.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/brand_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/category_data_sources.dart';
@@ -44,6 +46,7 @@ import 'package:marketi_e_commerce_app/features/home/data/data_sources/product_d
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/product_data_sources_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/user_data_data_sources.dart';
 import 'package:marketi_e_commerce_app/features/home/data/data_sources/user_data_data_sources_impl.dart';
+import 'package:marketi_e_commerce_app/features/home/data/repositories/add_rate_repo_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/data/repositories/category_repo_impl.dart';
 import 'package:marketi_e_commerce_app/features/home/domain/repositories/category_repo.dart';
 import 'package:marketi_e_commerce_app/features/home/domain/repositories/product_repo.dart';
@@ -62,9 +65,12 @@ import '../../features/favourites/presentation/cubit/favourites_cubit/favourites
 import '../../features/home/data/repositories/brand_repo_impl.dart';
 import '../../features/home/data/repositories/product_repo_impl.dart';
 import '../../features/home/data/repositories/user_data_repo_impl.dart';
+import '../../features/home/domain/repositories/add_rate_repo.dart';
 import '../../features/home/domain/repositories/brand_repo.dart';
+import '../../features/home/domain/usecase/add_rate_usecase.dart';
 import '../../features/home/domain/usecase/brand_usecase.dart';
 import '../../features/home/domain/usecase/user_data_usecase.dart';
+import '../../features/home/presentation/cubit/add_rate/add_rate_cubit.dart';
 import '../../features/home/presentation/cubit/brand_cubit/brand_cubit.dart';
 import '../api/api_manager.dart';
 import '../api/dio_factory.dart';
@@ -122,6 +128,10 @@ Future<void> setupGetIt() async {
     () => CartDataSourcesImpl(getIt<ApiManager>()),
   );
 
+  getIt.registerLazySingleton<AddRateDataSources>(
+    () => AddRateDataSourcesImpl(getIt<ApiManager>()),
+  );
+
   // 📚 Repositories
   getIt.registerLazySingleton<LoginRepository>(
     () => LoginRepositoryImpl(getIt<LoginRemoteDataSource>()),
@@ -165,6 +175,10 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton<CartRepo>(
     () => CartRepoImpl(getIt<CartDataSources>()),
+  );
+
+  getIt.registerLazySingleton<AddRateRepo>(
+    () => AddRateRepoImpl(getIt<AddRateDataSources>()),
   );
 
   // ✅ Use Cases
@@ -211,6 +225,10 @@ Future<void> setupGetIt() async {
     () => CartUseCase(getIt<CartRepo>()),
   );
 
+  getIt.registerLazySingleton<AddRateUseCase>(
+    () => AddRateUseCase(getIt<AddRateRepo>()),
+  );
+
   // 🧠 Cubits
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
 
@@ -252,4 +270,7 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton<CheckoutCubit>(
           () => CheckoutCubit());
+
+  getIt.registerLazySingleton<AddRateCubit>(
+          () => AddRateCubit(getIt<AddRateUseCase>()));
 }
