@@ -19,6 +19,8 @@ class UserDataCubit extends Cubit<UserDataState> {
       (l) => emit(UserDataError(l.error)),
       (r) async {
         await SharedPrefHelper.setData(SharedPrefsKeys.saveImageUrl,r.image);
+        await SharedPrefHelper.setData(SharedPrefsKeys.saveUserName,r.name);
+        await SharedPrefHelper.setData(SharedPrefsKeys.saveUserEmail,r.email);
 
         emit(UserDataSuccess(r));}
     );

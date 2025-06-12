@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marketi_e_commerce_app/core/helpers/extensions.dart';
 import 'package:marketi_e_commerce_app/features/home/presentation/cubit/user_data_cubit/user_data_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
 import '../../../../generated/assets.dart';
@@ -33,12 +35,17 @@ class CustomAppBar extends StatelessWidget {
                       child: SizedBox(
                         height: 50.h,
                         width: 50.w,
-                        child: CachedNetworkImage(
-                          imageUrl: state.userData.image,
-                          fit: BoxFit.contain,
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        child: InkWell(
+                          onTap: () {
+                            context.pushNamed(Routes.profileScreen);
+                          },
+                          child: CachedNetworkImage(
+                            imageUrl: state.userData.image,
+                            fit: BoxFit.contain,
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
+                          ),
                         ),
                       ),
                     ),

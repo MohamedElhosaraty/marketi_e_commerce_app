@@ -6,4 +6,6 @@ class SharedPrefsKeys {
   static const String isPassedIntroKey = "isPassedIntro";
   static const String resetTokenKey = "resetToken";
   static const String saveImageUrl = "resetToken";
+  static const String saveUserName = "saveUserName";
+  static const String saveUserEmail = "saveUserEmail";
 }

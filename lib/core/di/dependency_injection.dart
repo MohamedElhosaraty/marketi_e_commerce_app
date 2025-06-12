@@ -72,6 +72,7 @@ import '../../features/home/domain/usecase/brand_usecase.dart';
 import '../../features/home/domain/usecase/user_data_usecase.dart';
 import '../../features/home/presentation/cubit/add_rate/add_rate_cubit.dart';
 import '../../features/home/presentation/cubit/brand_cubit/brand_cubit.dart';
+import '../../features/profile/presentation/cubit/profile_cubit.dart';
 import '../api/api_manager.dart';
 import '../api/dio_factory.dart';
 
@@ -273,4 +274,7 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton<AddRateCubit>(
           () => AddRateCubit(getIt<AddRateUseCase>()));
+
+  getIt.registerLazySingleton<ProfileCubit>(
+          () => ProfileCubit());
 }

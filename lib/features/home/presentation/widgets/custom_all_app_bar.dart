@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_e_commerce_app/core/helpers/extensions.dart';
 import 'package:marketi_e_commerce_app/core/helpers/shared_pref_helper.dart';
 
 import '../../../../core/helpers/shared_prefs_keys.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
 
@@ -73,12 +75,17 @@ class _CustomAllAppBarState extends State<CustomAllAppBar> {
                 child: SizedBox(
                   height: 50.h,
                   width: 50.w,
-                  child: CachedNetworkImage(
-                    imageUrl: imageUrl,
-                    fit: BoxFit.contain,
-                    placeholder: (context, url) =>
-                        CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  child: InkWell(
+                    onTap: () {
+                      context.pushNamed(Routes.profileScreen);
+                    },
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      fit: BoxFit.contain,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
                   ),
                 ),
               ),

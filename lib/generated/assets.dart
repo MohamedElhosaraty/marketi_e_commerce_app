@@ -24,8 +24,10 @@ class Assets {
   static const String imagesCongratulations = 'assets/images/congratulations.png';
   static const String imagesCreateNewPassword = 'assets/images/create_new_password.png';
   static const String imagesFacebokIcon = 'assets/images/Facebok_Icon.png';
+  static const String imagesFeedbackIcon = 'assets/images/feedback_icon.png';
   static const String imagesForgetPasswordEmail = 'assets/images/forget_password_email.png';
   static const String imagesGoogleIcon = 'assets/images/Google_Icon.png';
+  static const String imagesLogOutIcon = 'assets/images/log_out_icon.png';
   static const String imagesLogoSignUp = 'assets/images/Logo_Sign_Up.png';
   static const String imagesLogoSplashScreen = 'assets/images/Logo_Splash_Screen.png';
   static const String imagesMap = 'assets/images/map.png';
@@ -33,10 +35,13 @@ class Assets {
   static const String imagesOnboarding1 = 'assets/images/onboarding_1.png';
   static const String imagesOnboarding2 = 'assets/images/onboarding_2.png';
   static const String imagesOnboarding3 = 'assets/images/onboarding_3.png';
+  static const String imagesProfileShapes = 'assets/images/profile_shapes.png';
+  static const String imagesProfileShapesDark = 'assets/images/profile_shapes_dark.png';
   static const String imagesVerificationCode = 'assets/images/verification_code.png';
   static const String svgActiveCartIcon = 'assets/svg/active_cart_icon.svg';
   static const String svgActiveFavouriteIcon = 'assets/svg/active_favourite_icon.svg';
   static const String svgActiveHomeIcon = 'assets/svg/active_home_icon.svg';
+  static const String svgCart = 'assets/svg/cart.svg';
   static const String svgCartEmpty = 'assets/svg/cart_empty.svg';
   static const String svgCartIcon = 'assets/svg/cart_icon.svg';
   static const String svgCheckoutSuccess = 'assets/svg/checkout_success.svg';

@@ -10,6 +10,7 @@ import 'package:marketi_e_commerce_app/features/home/presentation/pages/all_cate
 import 'package:marketi_e_commerce_app/features/home/presentation/pages/all_popular_product.dart';
 import 'package:marketi_e_commerce_app/features/main_screen/presentation/main_screen.dart';
 import 'package:marketi_e_commerce_app/features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:marketi_e_commerce_app/features/profile/presentation/pages/profile_screen.dart';
 
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/sign_up_screen.dart';
@@ -65,8 +66,6 @@ class AppRouter {
       case Routes.allBrands:
         return MaterialPageRoute(builder: (_) =>  AllBrands(),);
 
-
-
       case Routes.checkOutScreen:
         return MaterialPageRoute(builder: (_) =>  CheckoutScreen(
           cartState:  settings.arguments as CartState,
@@ -74,6 +73,9 @@ class AppRouter {
 
    case Routes.checkoutSuccess:
         return MaterialPageRoute(builder: (_) =>  CheckoutSuccess(),);
+
+   case Routes.profileScreen:
+        return MaterialPageRoute(builder: (_) =>  ProfileScreen(),);
 
 
     }

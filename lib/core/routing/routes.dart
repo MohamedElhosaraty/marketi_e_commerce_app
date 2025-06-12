@@ -13,5 +13,6 @@ class Routes {
   static const String allBrands = '/allBrands';
   static const String checkOutScreen = '/checkOutScreen';
   static const String checkoutSuccess = '/checkoutSuccess';
+  static const String profileScreen = '/profileScreen';
 
 }

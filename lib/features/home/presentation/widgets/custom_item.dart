@@ -8,7 +8,6 @@ import 'package:marketi_e_commerce_app/features/home/presentation/cubit/add_rate
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
-import '../cubit/product_cubit/product_cubit.dart';
 
 class CustomItem extends StatelessWidget {
   const CustomItem({
